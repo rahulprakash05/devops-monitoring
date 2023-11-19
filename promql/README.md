@@ -39,6 +39,14 @@ node_cpu_seconds_total{mode="idle"} < 50
 ```
 This query returns nodes where the idle CPU time is less than 50, indicating potentially high CPU usage.  
 
+The node_cpu_seconds_total metric is a counter, and when comparing it to a threshold, it's advisable to calculate the rate of change using the rate() function  
+
+```
+rate(node_cpu_seconds_total{mode="idle"}[5m]) * 100 < 50
+```
+In this query, rate(node_cpu_seconds_total{mode="idle"}[5m]) calculates the rate of change of the node_cpu_seconds_total metric over a 5-minute window, and then * 100 is used to convert it to a percentage. The comparison is then made to check if the CPU usage is less than 50%.  
+
+
 6. Top-N Metrics:
 Retrieve the top N metrics based on a certain criterion. For example, to get the top 5 nodes with the highest CPU usage:  
 ```
