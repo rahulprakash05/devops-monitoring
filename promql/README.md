@@ -54,6 +54,13 @@ topk(5, node_cpu_seconds_total{mode="idle"} * 100)
 ```
 This query uses the topk function to retrieve the top 5 nodes with the highest CPU usage.
 
+When using a counter metric like node_cpu_seconds_total, it's essential to calculate the rate of change using the rate() function, especially when working with the topk function.  
+```
+topk(5, rate(node_cpu_seconds_total{mode="idle"}[5m]) * 100)
+```
+In this query, rate(node_cpu_seconds_total{mode="idle"}[5m]) calculates the rate of change of the node_cpu_seconds_total metric over a 5-minute window, and then * 100 is used to convert it to a percentage. The topk function is applied to find the top 5 nodes with the highest CPU usage.  
+
+
 7. Alerting Rules:
 Define alerting rules based on certain conditions. For instance, to create an alert when CPU usage exceeds a threshold:
 ```
