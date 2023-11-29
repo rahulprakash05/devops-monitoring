@@ -1,0 +1,14 @@
+[Unit]
+Description=Loki Service
+After=network.target
+
+[Service]
+User=root
+Group=root
+#Type=simple
+ExecStart=/opt/loki/loki-linux-amd64 -config.file /opt/loki/loki-local-config.yaml
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
