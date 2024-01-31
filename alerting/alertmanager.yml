@@ -6,10 +6,10 @@ route:
 receivers:
 - name: email-me
   email_configs:
-  - to: 'chetanarchitect2@gmail.com'
-    from: 'chetanarchitect2@gmail.com'
+  - to: 'architectdevops7@gmail.com'
+    from: 'architectdevops7@gmail.com'
     smarthost: 'smtp.gmail.com:587'
-    auth_username: 'chetanarchitect2@gmail.com'
-    auth_identity: 'chetanarchitect2@gmail.com'
+    auth_username: 'architectdevops7@gmail.com'
+    auth_identity: 'architectdevops7@gmail.com'
     auth_password: '*****************'
     send_resolved: true
